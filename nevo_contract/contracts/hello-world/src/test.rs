@@ -3084,6 +3084,9 @@ fn test_upgrade_backward_compatibility_existing_operations() {
     assert_eq!(pool.3, 300_000_000);
 }
 
+#[test]
+#[should_panic(expected = "Pool not found")]
+fn test_donate_to_nonexistent_pool_panics() {
     let env = Env::default();
     let contract_id = env.register(Contract, ());
     let client = ContractClient::new(&env, &contract_id);
